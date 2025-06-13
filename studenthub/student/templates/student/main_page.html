@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f8;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .student-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .student-card:hover {
+      transform: scale(1.51);
+      background: green;
+    }
+
+    .student-age {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+
+    .student-attendance {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+
+    .student-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .student-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .student-email {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    {% for student in students %}
+    
+        <div class="student-card">
+            <div class="student-info">
+                <div class="student-name">{{ student.name }}</div>
+                <div class="student-email">{{ student.email }}</div>
+                <div class="student-age">{{ student.age }}</div>
+                <div class="student-attendance">{{ student.attendance }}</div>
+                <a href="{% url 'edit_student' id=student.id %}"> Edit </a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="student-card">
+            <div class="student-info">
+                <div class="student-name">John Doe</div>
+                <div class="student-email">john.doe@example.com</div>
+            </div>
+            </div>
+
+            <div class="student-card">
+            <div class="student-info">
+                <div class="student-name">Jane Smith</div>
+                <div class="student-email">jane.smith@example.com</div>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+<h2> Adding more students <h2>
+<a href="{% url 'first_form' %}"> Add students </a>
+</body>
+</html>

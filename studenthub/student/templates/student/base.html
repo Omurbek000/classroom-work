@@ -1,0 +1,15 @@
+<html>
+    <head> 
+        <title>Bul bizdin form </title>
+    </head>
+
+    <body>
+        <h1> Form </h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ forms.as_p }}
+
+            <button type="submit"> Submit </button>
+        </form>
+    </body>
+<html>
